@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zürich Marathon 2025 – Anmeldung</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo">
+        
+        <strong>Zürich Marathon</strong>
+      </div>
+      <nav class="main-nav">
+        <a href="#" class="nav-link active" onclick="showPage('start')">Startseite</a>
+        <a href="#" class="nav-link" onclick="showPage('form'); return false;">Anmeldung</a>
+        <a href="#" class="nav-link">Event-Info</a>
+      </nav>
+      <div class="header-date">Zürich, 27. April 2025</div>
+    </div>
+    <div class="header-line"></div>
+  </header>
+
+  <!-- ===================== STARTSEITE ===================== -->
+  <div id="page-start" class="page active">
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="hero-location">ZÜRICH, SCHWEIZ</p>
+        <h1>Zürich Marathon 2025</h1>
+        <p class="hero-date">27. April 2025 · Stadtzentrum &amp; Seeufer</p>
+        <p class="hero-text">Melde dich jetzt an und lauf dein bestes Rennen durch die historische Altstadt und entlang des glitzernden Zürichsees.</p>
+        <button class="btn-primary" onclick="showPage('form')">Jetzt anmelden</button>
+      </div>
+    </section>
+
+    <section class="distanz-section">
+      <h2>Wähle deine Distanz</h2>
+      <div class="distanz-cards">
+        <div class="distanz-card" onclick="selectDistanzAndGo('10 km')">
+          
+          <h3>10 km</h3>
+          <p>Der perfekte Einstieg für Hobbyläufer und Firmenläufer durch die Zürcher Innenstadt.</p>
+          <div class="card-price">CHF 45 <span>→</span></div>
+        </div>
+        <div class="distanz-card popular" onclick="selectDistanzAndGo('Halbmarathon')">
+          <div class="badge">Beliebt</div>
+          
+          <h3>Halbmarathon</h3>
+          <p>21.1 km pure Energie. Die ideale Distanz für ambitionierte Läufer mit Seeblick-Garantie.</p>
+          <div class="card-price">CHF 65 <span>→</span></div>
+        </div>
+        <div class="distanz-card" onclick="selectDistanzAndGo('Marathon')">
+          
+          <h3>Marathon</h3>
+          <p>Die Königsdisziplin. 42.195 km durch Zürich. Werde Teil der Legende.</p>
+          <div class="card-price">CHF 85 <span>→</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="info-section">
+      <div class="info-img"></div>
+      <div class="info-text">
+        <h2>Präzision &amp; Ausdauer</h2>
+        <p>Der Zürich Marathon ist bekannt für seine schnelle Strecke und die perfekte Organisation. Ob persönlicher Rekord oder das erste Mal über die volle Distanz – wir bieten dir die Bühne für deinen Erfolg.</p>
+        <ul class="info-list">
+          <li>Professionelle Zeitmessung</li>
+          <li>Umfangreiche Verpflegungsposten</li>
+          <li>Exklusives Finisher-Shirt</li>
+        </ul>
+        <button class="btn-primary" onclick="showPage('form')">Jetzt registrieren</button>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="footer-logo">Zürich Marathon</span>
+        <nav class="footer-nav">
+          <a href="#">Datenschutz</a>
+          <a href="#">Impressum</a>
+          <a href="#">AGB</a>
+          <a href="#">Kontakt</a>
+        </nav>
+        <span class="footer-copy">© 2025 Zürich Marathon. Alle Rechte vorbehalten.</span>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ===================== FORMULAR ===================== -->
+  <div id="page-form" class="page">
+    <div class="form-wrap">
+
+      <!-- Progress -->
+      <div class="progress-bar">
+        <div class="progress-step active" id="prog-1">
+          <div class="prog-line"></div>
+          <span>PERSÖNLICHE ANGABEN</span>
+        </div>
+        <div class="progress-step" id="prog-2">
+          <div class="prog-line"></div>
+          <span>LAUFDETAILS</span>
+        </div>
+        <div class="progress-step" id="prog-3">
+          <div class="prog-line"></div>
+          <span>ZAHLUNG</span>
+        </div>
+        <div class="progress-step" id="prog-4">
+          <div class="prog-line"></div>
+          <span>BESTÄTIGUNG</span>
+        </div>
+      </div>
+
+      <!-- SCHRITT 1 -->
+      <div class="form-step active" id="step-1">
+        <h2>Schritt 1: Persönliche Angaben</h2>
+        <div class="error-box" id="err-1" style="display:none">
+          Bitte korrigiere die markierten Felder.
+        </div>
+        <div class="form-card">
+          <div class="form-row">
+            <div class="field-group">
+              <label>Vorname <span class="req">*</span></label>
+              <input type="text" id="vorname" placeholder="Max" />
+              <span class="field-error" id="err-vorname"></span>
+            </div>
+            <div class="field-group">
+              <label>Nachname <span class="req">*</span></label>
+              <input type="text" id="nachname" placeholder="Muster" />
+              <span class="field-error" id="err-nachname"></span>
+            </div>
+          </div>
+          <div class="field-group">
+            <label>E-Mail-Adresse <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="max.muster@beispiel.ch" />
+            <span class="field-error" id="err-email"></span>
+          </div>
+          <div class="form-row">
+            <div class="field-group">
+              <label>Geburtsdatum <span class="req">*</span></label>
+              <input type="date" id="geburtsdatum" />
+              <span class="field-error" id="err-geburtsdatum"></span>
+            </div>
+            <div class="field-group">
+              <label>Telefonnummer <span class="optional">(optional)</span></label>
+              <input type="tel" id="telefon" placeholder="+41 79 000 00 00" />
+            </div>
+          </div>
+          <div class="field-group">
+            <label>Geschlecht <span class="req">*</span></label>
+            <div class="radio-group" id="geschlecht-group">
+              <label class="radio-opt"><input type="radio" name="geschlecht" value="Männlich" /> Männlich</label>
+              <label class="radio-opt"><input type="radio" name="geschlecht" value="Weiblich" /> Weiblich</label>
+              <label class="radio-opt"><input type="radio" name="geschlecht" value="Divers" /> Divers</label>
+            </div>
+            <span class="field-error" id="err-geschlecht"></span>
+          </div>
+          <p class="pflicht-hint"><span class="req">*</span> Pflichtfeld</p>
+        </div>
+        <div class="btn-row">
+          <button class="btn-ghost" onclick="showPage('start')">← Startseite</button>
+          <button class="btn-primary" onclick="validateStep1()">Weiter →</button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 2 -->
+      <div class="form-step" id="step-2">
+        <h2>Schritt 2: Laufdetails</h2>
+        <div class="error-box" id="err-2" style="display:none">Bitte korrigiere die markierten Felder.</div>
+        <div class="form-card">
+          <div class="form-row">
+            <div class="field-group">
+              <label>Distanz <span class="req">*</span></label>
+              <select id="distanz">
+                <option value="">Bitte wählen</option>
+                <option value="10 km">10 km – CHF 45</option>
+                <option value="Halbmarathon">Halbmarathon (21.1 km) – CHF 65</option>
+                <option value="Marathon">Marathon (42.195 km) – CHF 85</option>
+              </select>
+            </div>
+            <div class="field-group">
+              <label>Startblock <span class="req">*</span></label>
+              <select id="startblock">
+                <option value="">Bitte wählen</option>
+                <option value="Elite">Elite</option>
+                <option value="Hobbyläufer A">Hobbyläufer A (Zielzeit &lt; 1:45h)</option>
+                <option value="Hobbyläufer B">Hobbyläufer B (Zielzeit &gt; 1:45h)</option>
+              </select>
+            </div>
+          </div>
+          <div class="field-group">
+            <label>T-Shirt-Grösse <span class="req">*</span></label>
+            <div class="checkbox-group" id="tshirt-group">
+              <label class="check-opt"><input type="radio" name="tshirt" value="XS" /> XS</label>
+              <label class="check-opt"><input type="radio" name="tshirt" value="S" /> S</label>
+              <label class="check-opt"><input type="radio" name="tshirt" value="M" /> M</label>
+              <label class="check-opt"><input type="radio" name="tshirt" value="L" /> L</label>
+              <label class="check-opt"><input type="radio" name="tshirt" value="XL" /> XL</label>
+              <label class="check-opt"><input type="radio" name="tshirt" value="XXL" /> XXL</label>
+            </div>
+          </div>
+          <div class="field-group">
+            <label>Parkausweis benötigt? <span class="req">*</span></label>
+            <div class="radio-group">
+              <label class="radio-opt"><input type="radio" name="parkausweis" value="Ja" /> Ja</label>
+              <label class="radio-opt"><input type="radio" name="parkausweis" value="Nein" /> Nein</label>
+            </div>
+          </div>
+          <hr class="divider" />
+          <div class="field-group">
+            <label>Notfallkontakt <span class="optional">(optional)</span></label>
+            <div class="form-row">
+              <div class="field-group">
+                <input type="text" id="notfall-name" placeholder="Name" />
+              </div>
+              <div class="field-group">
+                <input type="tel" id="notfall-tel" placeholder="+41 78 000 00 00" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="btn-row">
+          <button class="btn-ghost" onclick="goStep(1)">← Zurück</button>
+          <button class="btn-primary" onclick="validateStep2()">Weiter →</button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 3 -->
+      <div class="form-step" id="step-3">
+        <h2>Schritt 3: Zahlung</h2>
+        <div class="error-box" id="err-3" style="display:none">Bitte korrigiere die markierten Felder.</div>
+        <div class="form-card">
+          <div class="order-summary" id="order-summary">
+            <p class="summary-label">BESTELLÜBERSICHT</p>
+            <div class="summary-row"><span id="sum-distanz">–</span><span id="sum-preis">–</span></div>
+            <div class="summary-row"><span id="sum-tshirt">T-Shirt</span><span>CHF 10.00</span></div>
+            <div class="summary-row total"><span>Gesamtbetrag</span><span id="sum-total">–</span></div>
+          </div>
+
+          <div class="field-group">
+            <label>Zahlungsmethode <span class="req">*</span></label>
+            <div class="pay-cards">
+              <div class="pay-card active" onclick="selectPay(this, 'Kreditkarte')">💳 Kreditkarte</div>
+              <div class="pay-card" onclick="selectPay(this, 'TWINT')">📱 TWINT</div>
+              <div class="pay-card" onclick="selectPay(this, 'Rechnung')">📄 Rechnung</div>
+            </div>
+          </div>
+
+          <div id="kreditkarte-fields">
+            <div class="field-group">
+              <label>Kartennummer <span class="req">*</span></label>
+              <input type="text" id="karte-nr" placeholder="•••• •••• •••• ••••" maxlength="19" oninput="formatKarte(this)" />
+            </div>
+            <div class="form-row">
+              <div class="field-group">
+                <label>Ablaufdatum <span class="req">*</span></label>
+                <input type="text" id="karte-ablauf" placeholder="MM/JJ" maxlength="5" />
+              </div>
+              <div class="field-group">
+                <label>CVV <span class="req">*</span></label>
+                <input type="text" id="karte-cvv" placeholder="•••" maxlength="3" />
+              </div>
+            </div>
+            <div class="field-group">
+              <label>Name des Karteninhabers <span class="req">*</span></label>
+              <input type="text" id="karte-inhaber" placeholder="Vorname Nachname" />
+            </div>
+          </div>
+
+          <label class="agb-row">
+            <input type="checkbox" id="agb" />
+            Ich akzeptiere die Teilnahmebedingungen und habe die <a href="#">AGB lesen</a> verstanden.
+          </label>
+        </div>
+        <div class="btn-row">
+          <button class="btn-ghost" onclick="goStep(2)">← Zurück</button>
+          <button class="btn-primary" onclick="validateStep3()">Jetzt bezahlen →</button>
+        </div>
+      </div>
+
+      <!-- SCHRITT 4 -->
+      <div class="form-step" id="step-4">
+        <div class="success-area">
+          <div class="success-icon"></div>
+          <h2>Anmeldung erfolgreich!</h2>
+          <p id="success-text">–</p>
+          <div class="summary-card" id="final-summary"></div>
+          <div class="info-box">
+            Eine Bestätigungs-E-Mail wurde an deine Adresse gesendet. Dein Startpass wird dir 2 Wochen vor dem Event zugestellt.
+          </div>
+          <div class="btn-row center">
+            <button class="btn-ghost" onclick="downloadJSON()">Anmeldung als JSON</button>
+            <button class="btn-primary" onclick="showPage('start')">Zurück zur Startseite</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /form-wrap -->
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <span class="footer-logo">Zürich Marathon</span>
+        <nav class="footer-nav">
+          <a href="#">Datenschutz</a>
+          <a href="#">Impressum</a>
+          <a href="#">AGB</a>
+          <a href="#">Kontakt</a>
+        </nav>
+        <span class="footer-copy">© 2025 Zürich Marathon. Alle Rechte vorbehalten.</span>
+      </div>
+    </footer>
+  </div><!-- /page-form -->
+
+  <script src="script.js"></script>
+</body>
+</html>
