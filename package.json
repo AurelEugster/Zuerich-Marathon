@@ -1,0 +1,14 @@
+{
+  "name": "zuerich-marathon-website",
+  "version": "1.0.0",
+  "description": "Zuerich Marathon Website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "better-sqlite3": "^11.3.0"
+  }
+}
