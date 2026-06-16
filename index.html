@@ -129,37 +129,37 @@
           <div class="form-row">
             <div class="field-group">
               <label for="vorname">Vorname <span class="req">*</span></label>
-              <input type="text" id="vorname" placeholder="Max" />
+              <input type="text" id="vorname" placeholder="Max" required maxlength="50" />
               <span class="field-error" id="err-vorname"></span>
             </div>
             <div class="field-group">
               <label for="nachname">Nachname <span class="req">*</span></label>
-              <input type="text" id="nachname" placeholder="Muster" />
+              <input type="text" id="nachname" placeholder="Muster" required maxlength="50" />
               <span class="field-error" id="err-nachname"></span>
             </div>
           </div>
           <div class="field-group">
             <label for="email">E-Mail-Adresse <span class="req">*</span></label>
-            <input type="email" id="email" placeholder="max.muster@beispiel.ch" />
+            <input type="email" id="email" placeholder="max.muster@beispiel.ch" required maxlength="100" />
             <span class="field-error" id="err-email"></span>
           </div>
           <div class="form-row">
             <div class="field-group">
               <label for="geburtsdatum">Geburtsdatum <span class="req">*</span></label>
-              <input type="date" id="geburtsdatum" />
+              <input type="date" id="geburtsdatum" required />
               <span class="field-error" id="err-geburtsdatum"></span>
             </div>
             <div class="field-group">
               <label for="telefon">Telefonnummer <span class="optional">(optional)</span></label>
-              <input type="tel" id="telefon" placeholder="+41 79 000 00 00" />
+              <input type="tel" id="telefon" placeholder="+41 79 000 00 00" pattern="[+\d\s\-()]{7,20}" />
             </div>
           </div>
           <fieldset class="radio-fieldset">
             <legend>Geschlecht <span class="req">*</span></legend>
             <div class="radio-group" id="geschlecht-group">
-              <label class="radio-opt" for="geschlecht-m"><input type="radio" name="geschlecht" id="geschlecht-m" value="Männlich" /> Männlich</label>
-              <label class="radio-opt" for="geschlecht-w"><input type="radio" name="geschlecht" id="geschlecht-w" value="Weiblich" /> Weiblich</label>
-              <label class="radio-opt" for="geschlecht-d"><input type="radio" name="geschlecht" id="geschlecht-d" value="Divers" /> Divers</label>
+              <label class="radio-opt" for="geschlecht-m"><input type="radio" name="geschlecht" id="geschlecht-m" value="Männlich" required /> Männlich</label>
+              <label class="radio-opt" for="geschlecht-w"><input type="radio" name="geschlecht" id="geschlecht-w" value="Weiblich" required /> Weiblich</label>
+              <label class="radio-opt" for="geschlecht-d"><input type="radio" name="geschlecht" id="geschlecht-d" value="Divers" required /> Divers</label>
             </div>
             <span class="field-error" id="err-geschlecht"></span>
           </fieldset>
@@ -180,7 +180,7 @@
           <div class="form-row">
             <div class="field-group">
               <label for="distanz">Distanz <span class="req">*</span></label>
-              <select id="distanz">
+              <select id="distanz" required>
                 <option value="">Bitte wählen</option>
                 <option value="10 km">10 km – CHF 45</option>
                 <option value="Halbmarathon">Halbmarathon (21.1 km) – CHF 65</option>
@@ -189,7 +189,7 @@
             </div>
             <div class="field-group">
               <label for="startblock">Startblock <span class="req">*</span></label>
-              <select id="startblock">
+              <select id="startblock" required>
                 <option value="">Bitte wählen</option>
                 <option value="Elite">Elite</option>
                 <option value="Hobbyläufer A">Hobbyläufer A (Zielzeit &lt; 1:45h)</option>
@@ -200,19 +200,19 @@
           <fieldset class="radio-fieldset">
             <legend>T-Shirt-Grösse <span class="req">*</span></legend>
             <div class="checkbox-group" id="tshirt-group">
-              <label class="check-opt" for="tshirt-xs"><input type="radio" name="tshirt" id="tshirt-xs" value="XS" /> XS</label>
-              <label class="check-opt" for="tshirt-s"><input type="radio" name="tshirt" id="tshirt-s" value="S" /> S</label>
-              <label class="check-opt" for="tshirt-m"><input type="radio" name="tshirt" id="tshirt-m" value="M" /> M</label>
-              <label class="check-opt" for="tshirt-l"><input type="radio" name="tshirt" id="tshirt-l" value="L" /> L</label>
-              <label class="check-opt" for="tshirt-xl"><input type="radio" name="tshirt" id="tshirt-xl" value="XL" /> XL</label>
-              <label class="check-opt" for="tshirt-xxl"><input type="radio" name="tshirt" id="tshirt-xxl" value="XXL" /> XXL</label>
+              <label class="check-opt" for="tshirt-xs"><input type="radio" name="tshirt" id="tshirt-xs" value="XS" required /> XS</label>
+              <label class="check-opt" for="tshirt-s"><input type="radio" name="tshirt" id="tshirt-s" value="S" required /> S</label>
+              <label class="check-opt" for="tshirt-m"><input type="radio" name="tshirt" id="tshirt-m" value="M" required /> M</label>
+              <label class="check-opt" for="tshirt-l"><input type="radio" name="tshirt" id="tshirt-l" value="L" required /> L</label>
+              <label class="check-opt" for="tshirt-xl"><input type="radio" name="tshirt" id="tshirt-xl" value="XL" required /> XL</label>
+              <label class="check-opt" for="tshirt-xxl"><input type="radio" name="tshirt" id="tshirt-xxl" value="XXL" required /> XXL</label>
             </div>
           </fieldset>
           <fieldset class="radio-fieldset">
             <legend>Parkausweis benötigt? <span class="req">*</span></legend>
             <div class="radio-group">
-              <label class="radio-opt" for="parkausweis-ja"><input type="radio" name="parkausweis" id="parkausweis-ja" value="Ja" /> Ja</label>
-              <label class="radio-opt" for="parkausweis-nein"><input type="radio" name="parkausweis" id="parkausweis-nein" value="Nein" /> Nein</label>
+              <label class="radio-opt" for="parkausweis-ja"><input type="radio" name="parkausweis" id="parkausweis-ja" value="Ja" required /> Ja</label>
+              <label class="radio-opt" for="parkausweis-nein"><input type="radio" name="parkausweis" id="parkausweis-nein" value="Nein" required /> Nein</label>
             </div>
           </fieldset>
           <hr class="divider" />
@@ -221,11 +221,11 @@
             <div class="form-row">
               <div class="field-group">
                 <label for="notfall-name">Name</label>
-                <input type="text" id="notfall-name" placeholder="Name" />
+                <input type="text" id="notfall-name" placeholder="Name" maxlength="100" />
               </div>
               <div class="field-group">
                 <label for="notfall-tel">Telefon</label>
-                <input type="tel" id="notfall-tel" placeholder="+41 78 000 00 00" />
+                <input type="tel" id="notfall-tel" placeholder="+41 78 000 00 00" pattern="[+\d\s\-()]{7,20}" />
               </div>
             </div>
           </fieldset>
@@ -262,26 +262,26 @@
             <legend>Kartendaten <span class="req">*</span></legend>
             <div class="field-group">
               <label for="karte-nr">Kartennummer <span class="req">*</span></label>
-              <input type="text" id="karte-nr" placeholder="•••• •••• •••• ••••" maxlength="19" oninput="formatKarte(this)" />
+              <input type="text" id="karte-nr" placeholder="•••• •••• •••• ••••" maxlength="19" required oninput="formatKarte(this)" />
             </div>
             <div class="form-row">
               <div class="field-group">
                 <label for="karte-ablauf">Ablaufdatum <span class="req">*</span></label>
-                <input type="text" id="karte-ablauf" placeholder="MM/JJ" maxlength="5" />
+                <input type="text" id="karte-ablauf" placeholder="MM/JJ" maxlength="5" required pattern="\d{2}/\d{2}" />
               </div>
               <div class="field-group">
                 <label for="karte-cvv">CVV <span class="req">*</span></label>
-                <input type="text" id="karte-cvv" placeholder="•••" maxlength="3" />
+                <input type="text" id="karte-cvv" placeholder="•••" maxlength="3" required pattern="\d{3,4}" />
               </div>
             </div>
             <div class="field-group">
               <label for="karte-inhaber">Name des Karteninhabers <span class="req">*</span></label>
-              <input type="text" id="karte-inhaber" placeholder="Vorname Nachname" />
+              <input type="text" id="karte-inhaber" placeholder="Vorname Nachname" required maxlength="100" />
             </div>
           </fieldset>
 
           <label class="agb-row" for="agb">
-            <input type="checkbox" id="agb" />
+            <input type="checkbox" id="agb" required />
             Ich akzeptiere die Teilnahmebedingungen und habe die <a href="#">AGB lesen</a> verstanden.
           </label>
         </fieldset>

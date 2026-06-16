@@ -308,9 +308,9 @@ body {
 }
 
 /* ===== FORM CARD ===== */
-fieldset { border: none; margin: 0; padding: 0; }
+fieldset { border: none; margin: 0; padding: 0; min-width: 0; display: block; }
 fieldset.form-card > legend {
-  float: left;
+  display: block;
   width: 100%;
   font-size: 11px;
   font-weight: 600;
@@ -320,7 +320,6 @@ fieldset.form-card > legend {
   margin-bottom: 20px;
   padding: 0;
 }
-fieldset.form-card::after { content: ''; display: table; clear: both; }
 .radio-fieldset { margin-bottom: 18px; width: 100%; }
 .radio-fieldset > legend {
   display: block;
