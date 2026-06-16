@@ -218,8 +218,33 @@ function formatKarte(input) {
   input.value = val.replace(/(.{4})/g, '$1 ').trim();
 }
 
+// ===== ANMELDUNG AN API SENDEN =====
+function buildAnmeldungPayload() {
+  const p = formData.persoenlich;
+  const l = formData.laufdetails;
+  const z = formData.zahlung;
+
+  return {
+    vorname: p.vorname,
+    nachname: p.nachname,
+    email: p.email,
+    telefon: p.telefon,
+    geburtsdatum: p.geburtsdatum,
+    geschlecht: p.geschlecht,
+    distanz: l.distanz,
+    startblock: l.startblock,
+    tshirt_groesse: l.tshirt_groesse,
+    parkausweis: l.parkausweis,
+    notfall_name: l.notfall_name,
+    notfall_telefon: l.notfall_telefon,
+    zahlungsmethode: z.methode,
+    betrag_chf: z.betrag_chf,
+    status: formData.status
+  };
+}
+
 // ===== VALIDIERUNG SCHRITT 3 =====
-function validateStep3() {
+async function validateStep3() {
   let valid = true;
   const errBox = document.getElementById('err-3');
 
@@ -244,6 +269,7 @@ function validateStep3() {
   if (!agb.checked) valid = false;
 
   if (!valid) {
+    errBox.textContent = 'Bitte korrigiere die markierten Felder.';
     errBox.style.display = 'flex';
     window.scrollTo({ top: 0, behavior: 'smooth' });
     return;
@@ -251,12 +277,37 @@ function validateStep3() {
   errBox.style.display = 'none';
 
   formData.zahlung.agb_akzeptiert = true;
-  formData.anmelde_id = 'ZM-2025-' + Math.floor(1000 + Math.random() * 9000);
-  formData.anmelde_datum = new Date().toISOString();
   formData.status = 'bezahlt';
 
-  buildConfirmation();
-  goStep(4);
+  try {
+    const response = await fetch('/api/anmeldungen', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(buildAnmeldungPayload())
+    });
+
+    if (!response.ok) {
+      throw new Error('Serverfehler beim Speichern der Anmeldung.');
+    }
+
+    const gespeicherteAnmeldung = await response.json();
+    formData.anmelde_id = gespeicherteAnmeldung.id;
+    formData.anmelde_datum = gespeicherteAnmeldung.anmelde_datum;
+
+    buildConfirmation();
+    goStep(4);
+  } catch (err) {
+    errBox.textContent = 'Die Anmeldung konnte nicht gespeichert werden. Bitte versuche es später erneut.';
+    errBox.style.display = 'flex';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+
+// ===== DATUM FORMATIEREN =====
+function formatAnmeldeDatum(datum) {
+  if (!datum) return '–';
+  const iso = datum.includes('T') ? datum : datum.replace(' ', 'T') + 'Z';
+  return new Date(iso).toLocaleString('de-CH');
 }
 
 // ===== BESTÄTIGUNG AUFBAUEN =====
@@ -270,6 +321,7 @@ function buildConfirmation() {
 
   const rows = [
     ['Anmelde-ID', formData.anmelde_id],
+    ['Anmeldedatum', formatAnmeldeDatum(formData.anmelde_datum)],
     ['Distanz', l.distanz],
     ['Startblock', l.startblock],
     ['T-Shirt Grösse', l.tshirt_groesse],

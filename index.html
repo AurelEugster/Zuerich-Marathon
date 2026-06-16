@@ -124,46 +124,47 @@
         <div class="error-box" id="err-1" style="display:none">
           Bitte korrigiere die markierten Felder.
         </div>
-        <div class="form-card">
+        <fieldset class="form-card">
+          <legend>Persönliche Angaben</legend>
           <div class="form-row">
             <div class="field-group">
-              <label>Vorname <span class="req">*</span></label>
+              <label for="vorname">Vorname <span class="req">*</span></label>
               <input type="text" id="vorname" placeholder="Max" />
               <span class="field-error" id="err-vorname"></span>
             </div>
             <div class="field-group">
-              <label>Nachname <span class="req">*</span></label>
+              <label for="nachname">Nachname <span class="req">*</span></label>
               <input type="text" id="nachname" placeholder="Muster" />
               <span class="field-error" id="err-nachname"></span>
             </div>
           </div>
           <div class="field-group">
-            <label>E-Mail-Adresse <span class="req">*</span></label>
+            <label for="email">E-Mail-Adresse <span class="req">*</span></label>
             <input type="email" id="email" placeholder="max.muster@beispiel.ch" />
             <span class="field-error" id="err-email"></span>
           </div>
           <div class="form-row">
             <div class="field-group">
-              <label>Geburtsdatum <span class="req">*</span></label>
+              <label for="geburtsdatum">Geburtsdatum <span class="req">*</span></label>
               <input type="date" id="geburtsdatum" />
               <span class="field-error" id="err-geburtsdatum"></span>
             </div>
             <div class="field-group">
-              <label>Telefonnummer <span class="optional">(optional)</span></label>
+              <label for="telefon">Telefonnummer <span class="optional">(optional)</span></label>
               <input type="tel" id="telefon" placeholder="+41 79 000 00 00" />
             </div>
           </div>
-          <div class="field-group">
-            <label>Geschlecht <span class="req">*</span></label>
+          <fieldset class="radio-fieldset">
+            <legend>Geschlecht <span class="req">*</span></legend>
             <div class="radio-group" id="geschlecht-group">
-              <label class="radio-opt"><input type="radio" name="geschlecht" value="Männlich" /> Männlich</label>
-              <label class="radio-opt"><input type="radio" name="geschlecht" value="Weiblich" /> Weiblich</label>
-              <label class="radio-opt"><input type="radio" name="geschlecht" value="Divers" /> Divers</label>
+              <label class="radio-opt" for="geschlecht-m"><input type="radio" name="geschlecht" id="geschlecht-m" value="Männlich" /> Männlich</label>
+              <label class="radio-opt" for="geschlecht-w"><input type="radio" name="geschlecht" id="geschlecht-w" value="Weiblich" /> Weiblich</label>
+              <label class="radio-opt" for="geschlecht-d"><input type="radio" name="geschlecht" id="geschlecht-d" value="Divers" /> Divers</label>
             </div>
             <span class="field-error" id="err-geschlecht"></span>
-          </div>
+          </fieldset>
           <p class="pflicht-hint"><span class="req">*</span> Pflichtfeld</p>
-        </div>
+        </fieldset>
         <div class="btn-row">
           <button class="btn-ghost" onclick="showPage('start')">← Startseite</button>
           <button class="btn-primary" onclick="validateStep1()">Weiter →</button>
@@ -174,10 +175,11 @@
       <div class="form-step" id="step-2">
         <h2>Schritt 2: Laufdetails</h2>
         <div class="error-box" id="err-2" style="display:none">Bitte korrigiere die markierten Felder.</div>
-        <div class="form-card">
+        <fieldset class="form-card">
+          <legend>Laufdetails</legend>
           <div class="form-row">
             <div class="field-group">
-              <label>Distanz <span class="req">*</span></label>
+              <label for="distanz">Distanz <span class="req">*</span></label>
               <select id="distanz">
                 <option value="">Bitte wählen</option>
                 <option value="10 km">10 km – CHF 45</option>
@@ -186,7 +188,7 @@
               </select>
             </div>
             <div class="field-group">
-              <label>Startblock <span class="req">*</span></label>
+              <label for="startblock">Startblock <span class="req">*</span></label>
               <select id="startblock">
                 <option value="">Bitte wählen</option>
                 <option value="Elite">Elite</option>
@@ -195,37 +197,39 @@
               </select>
             </div>
           </div>
-          <div class="field-group">
-            <label>T-Shirt-Grösse <span class="req">*</span></label>
+          <fieldset class="radio-fieldset">
+            <legend>T-Shirt-Grösse <span class="req">*</span></legend>
             <div class="checkbox-group" id="tshirt-group">
-              <label class="check-opt"><input type="radio" name="tshirt" value="XS" /> XS</label>
-              <label class="check-opt"><input type="radio" name="tshirt" value="S" /> S</label>
-              <label class="check-opt"><input type="radio" name="tshirt" value="M" /> M</label>
-              <label class="check-opt"><input type="radio" name="tshirt" value="L" /> L</label>
-              <label class="check-opt"><input type="radio" name="tshirt" value="XL" /> XL</label>
-              <label class="check-opt"><input type="radio" name="tshirt" value="XXL" /> XXL</label>
+              <label class="check-opt" for="tshirt-xs"><input type="radio" name="tshirt" id="tshirt-xs" value="XS" /> XS</label>
+              <label class="check-opt" for="tshirt-s"><input type="radio" name="tshirt" id="tshirt-s" value="S" /> S</label>
+              <label class="check-opt" for="tshirt-m"><input type="radio" name="tshirt" id="tshirt-m" value="M" /> M</label>
+              <label class="check-opt" for="tshirt-l"><input type="radio" name="tshirt" id="tshirt-l" value="L" /> L</label>
+              <label class="check-opt" for="tshirt-xl"><input type="radio" name="tshirt" id="tshirt-xl" value="XL" /> XL</label>
+              <label class="check-opt" for="tshirt-xxl"><input type="radio" name="tshirt" id="tshirt-xxl" value="XXL" /> XXL</label>
             </div>
-          </div>
-          <div class="field-group">
-            <label>Parkausweis benötigt? <span class="req">*</span></label>
+          </fieldset>
+          <fieldset class="radio-fieldset">
+            <legend>Parkausweis benötigt? <span class="req">*</span></legend>
             <div class="radio-group">
-              <label class="radio-opt"><input type="radio" name="parkausweis" value="Ja" /> Ja</label>
-              <label class="radio-opt"><input type="radio" name="parkausweis" value="Nein" /> Nein</label>
+              <label class="radio-opt" for="parkausweis-ja"><input type="radio" name="parkausweis" id="parkausweis-ja" value="Ja" /> Ja</label>
+              <label class="radio-opt" for="parkausweis-nein"><input type="radio" name="parkausweis" id="parkausweis-nein" value="Nein" /> Nein</label>
             </div>
-          </div>
+          </fieldset>
           <hr class="divider" />
-          <div class="field-group">
-            <label>Notfallkontakt <span class="optional">(optional)</span></label>
+          <fieldset class="radio-fieldset">
+            <legend>Notfallkontakt <span class="optional">(optional)</span></legend>
             <div class="form-row">
               <div class="field-group">
+                <label for="notfall-name">Name</label>
                 <input type="text" id="notfall-name" placeholder="Name" />
               </div>
               <div class="field-group">
+                <label for="notfall-tel">Telefon</label>
                 <input type="tel" id="notfall-tel" placeholder="+41 78 000 00 00" />
               </div>
             </div>
-          </div>
-        </div>
+          </fieldset>
+        </fieldset>
         <div class="btn-row">
           <button class="btn-ghost" onclick="goStep(1)">← Zurück</button>
           <button class="btn-primary" onclick="validateStep2()">Weiter →</button>
@@ -236,7 +240,8 @@
       <div class="form-step" id="step-3">
         <h2>Schritt 3: Zahlung</h2>
         <div class="error-box" id="err-3" style="display:none">Bitte korrigiere die markierten Felder.</div>
-        <div class="form-card">
+        <fieldset class="form-card">
+          <legend>Zahlungsinformationen</legend>
           <div class="order-summary" id="order-summary">
             <p class="summary-label">BESTELLÜBERSICHT</p>
             <div class="summary-row"><span id="sum-distanz">–</span><span id="sum-preis">–</span></div>
@@ -244,41 +249,42 @@
             <div class="summary-row total"><span>Gesamtbetrag</span><span id="sum-total">–</span></div>
           </div>
 
-          <div class="field-group">
-            <label>Zahlungsmethode <span class="req">*</span></label>
+          <fieldset class="radio-fieldset">
+            <legend>Zahlungsmethode <span class="req">*</span></legend>
             <div class="pay-cards">
               <div class="pay-card active" onclick="selectPay(this, 'Kreditkarte')">💳 Kreditkarte</div>
               <div class="pay-card" onclick="selectPay(this, 'TWINT')">📱 TWINT</div>
               <div class="pay-card" onclick="selectPay(this, 'Rechnung')">📄 Rechnung</div>
             </div>
-          </div>
+          </fieldset>
 
-          <div id="kreditkarte-fields">
+          <fieldset class="radio-fieldset" id="kreditkarte-fields">
+            <legend>Kartendaten <span class="req">*</span></legend>
             <div class="field-group">
-              <label>Kartennummer <span class="req">*</span></label>
+              <label for="karte-nr">Kartennummer <span class="req">*</span></label>
               <input type="text" id="karte-nr" placeholder="•••• •••• •••• ••••" maxlength="19" oninput="formatKarte(this)" />
             </div>
             <div class="form-row">
               <div class="field-group">
-                <label>Ablaufdatum <span class="req">*</span></label>
+                <label for="karte-ablauf">Ablaufdatum <span class="req">*</span></label>
                 <input type="text" id="karte-ablauf" placeholder="MM/JJ" maxlength="5" />
               </div>
               <div class="field-group">
-                <label>CVV <span class="req">*</span></label>
+                <label for="karte-cvv">CVV <span class="req">*</span></label>
                 <input type="text" id="karte-cvv" placeholder="•••" maxlength="3" />
               </div>
             </div>
             <div class="field-group">
-              <label>Name des Karteninhabers <span class="req">*</span></label>
+              <label for="karte-inhaber">Name des Karteninhabers <span class="req">*</span></label>
               <input type="text" id="karte-inhaber" placeholder="Vorname Nachname" />
             </div>
-          </div>
+          </fieldset>
 
-          <label class="agb-row">
+          <label class="agb-row" for="agb">
             <input type="checkbox" id="agb" />
             Ich akzeptiere die Teilnahmebedingungen und habe die <a href="#">AGB lesen</a> verstanden.
           </label>
-        </div>
+        </fieldset>
         <div class="btn-row">
           <button class="btn-ghost" onclick="goStep(2)">← Zurück</button>
           <button class="btn-primary" onclick="validateStep3()">Jetzt bezahlen →</button>
